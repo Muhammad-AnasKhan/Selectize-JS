@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectize JS</title>
+
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/css/selectize.default.min.css"
+        integrity="sha512-pTaEn+6gF1IeWv3W1+7X7eM60TFu/agjgoHmYhAfLEU8Phuf6JKiiE8YmsNC0aCgQv4192s4Vai8YZ6VNM6vyQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/js/selectize.min.js"
+        integrity="sha512-IOebNkvA/HZjMM7MxL0NYeLYEalloZ8ckak+NDtOViP7oiYzG5vn6WVXyrJDiJPhl4yRdmNAG49iuLmhkUdVsQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+
+<body>
+    <select id="normalize">
+        <option value=""></option>
+        <option value="1">Awesome</option>
+        <option value="2">Beast</option>
+        <option value="3">Compatible</option>
+        <option value="4">Thomas Edison</option>
+        <option value="5">Nikola</option>
+        <option value="6">Selectize</option>
+        <option value="7">Javascript</option>
+    </select>
+    <br/>
+    <button>Refresh</button>
+
+    <script src="jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            var selectized = $('#normalize').selectize()
+
+            var control = selectized[0].selectize;
+
+            $('button').click(()=>{
+                console.log('clicked')
+                control.destroy() // destroy existing instance
+                $('#normalize').html('<option>One</option>') // update the dropdown
+                selectized = $('#normalize').selectize() // reinitilize the selectize instance
+            })
+        });
+
+    </script>
+</body>
+
+</html>
